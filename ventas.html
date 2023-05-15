@@ -1,0 +1,113 @@
+
+<div class="container">
+
+    <form method="post" id="formulario">
+        <label for="producto">Producto : </label>
+        <input type="text" id="producto" name="producto"><br><br>
+        <label for="cantidad">Cantidad : </label>
+        <input type="text" id="cantidad" name="cantidad"><br><br>
+        <label for="descuento">Descuento : </label>
+        <input type="text" id="descuento" name="descuento"><br><br>
+        <label for="cant_desc">Cant_desc : </label>
+        <input type="text" id="cant_desc" name="cant_desc"><br><br>
+        <label for="precio">precio : </label>
+        <input type="text" id="precio" name="precio"><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <h1>Listado de ventas</h1>
+    <div class="tabla">
+    <table id="tabla" border="1">
+        <thead>
+            <tr>
+                 <b><td>producto</td>
+                <td>cantidad</td>
+                <td>descuento</td>
+                <td>cant_desc</td>
+                <td>precio</td> </b>
+            </tr>
+        </thead>
+    </div>
+
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+
+    
+
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:5500/place/ventas",
+            dataType: "json",
+            success: function(data) {
+                $.each(data, function(i, item){
+                    var fila = "<tr>"+
+                        "<td>" + item.producto + "</td>" +
+                        "<td>" + item.cantidad + "</td>" +
+                        "<td>" + item.descuento + "</td>" +
+                        "<td>" + item.cant_desc + "</td>" +
+                        "<td>" + item.precio + "</td>" +
+                    "</tr>";
+                        console.log(item.producto);
+                    $("#tabla>tbody").append(fila)
+                })
+            }
+        })
+    });
+
+
+
+
+
+
+
+    $("#formulario").on("submit", function(e) {
+// Evita que el formulario se envíe de manera tradicional
+e.preventDefault();
+
+// Obtiene los datos del formulario
+var datos = {
+producto: $("#producto").val(),
+cantidad: $("#cantidad").val(),
+descuento: $("#descuento").val(),
+cant_desc: $("#cant_desc").val(),
+precio: $("#precio").val()
+}
+
+// Convierte los datos a formato JSON
+var datosJson = JSON.stringify(datos);
+
+// Crea una solicitud AJAX utilizando el método POST
+var ajax_request = new XMLHttpRequest();
+ajax_request.open("POST", "http://localhost:5500/place/ventas", true);
+ajax_request.setRequestHeader("Content-Type", "application/json, charset=UTF-8");
+ajax_request.send(datosJson);
+
+// Maneja la respuesta del servidor
+ajax_request.onload = function() {
+if (ajax_request.status >= 200 && ajax_request.status < 400) {
+  // Si la solicitud se procesó correctamente, muestra un mensaje de éxito
+  console.log("Los datos se enviaron correctamente");
+} else {
+  // Si ocurrió un error, muestra un mensaje de error
+  console.error("Ocurrió un error al enviar los datos");
+}
+}
+});
+
+
+    
+</script>
+
+
+<div class="enlaces">
+<a href="productos.html"><button>Productos</button></a>
+<a href="usuarios.html"><button>Usuarios</button></a>
+</div>
+

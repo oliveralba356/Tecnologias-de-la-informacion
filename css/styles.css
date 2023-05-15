@@ -1,0 +1,66 @@
+#quienes-somos
+{
+    width: 800px;
+    height: auto;
+    max-width: 700px;
+    margin: 20px;
+    padding: 40px;
+    background: #c7ebc95b;
+    border-radius: 12px;
+}
+
+#menu
+{
+    position: relative;
+    font-size: 1em;
+    columns: 5;
+    background: rgb(148, 255, 148);
+    transition: .5s;
+    
+}
+#menu ul li
+{
+    list-style: none;
+    transition: .5s;
+    margin-bottom: 20px;
+
+}
+
+#menu ul  li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: .5s;
+
+}
+
+#menu ul  li a:hover
+{
+    transition: .5s;
+    text-decoration: underline;
+    font-size: 1.1em;
+
+}
+
+#background_img_web
+{
+    border: 10px solid rgba(0, 189, 101, 0.363);
+    transition: .5s;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+#background_img_web img:hover
+{
+    transition: .5s;
+    background-position: cover;
+
+    transform: scale(1.1);
+}
+#background_img_web img
+{
+    transition: .5s;
+    position: relative;
+    width: 1000px;
+    height: 400px;
+    filter: saturate(1.5)
+}

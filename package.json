@@ -1,0 +1,1 @@
+{"name":"backed","version":"1.0.0","description":"servicio rest","main":"index.js","scripts":{"start":"node src/index.js"},"repository":{"type":"git","url":"https://jordyalba959@dev.azure.com/jordyalba959/hello%20world/_git/Backed"},"dependencies":{"dotenv":"^16.0.3","express":"^4.18.2","mongoose":"^6.7.2","path":"^0.12.7","swagger-jsdoc":"^6.2.5","swagger-ui-express":"^4.6.0"}}
